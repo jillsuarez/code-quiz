@@ -7,6 +7,76 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#high-scores">view high scores</a></li>
+                <li><h1>JavaScript Quiz</h1></li>
+                <li id="timer">Timer:</li>
+            </ul>
+        </nav>
+    </header>
+    <section id="cycle">
+        <h2>Coding Quiz Challenge</h2>
+        <p> Try to answer the following code-relayed questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button id="start-quiz" class="button">Start Quiz</button>
+    </section>
+    <section id="question">
+        <p>Commonly used data types DO NOT include:</p>
+        <button id="incorrect" class="button">strings</button>
+        <button id="incorrect" class="button">booleans</button>
+        <button id="correct" class="button">alerts</button>
+        <button id="incorrect" class="button">numbers</button>
+    </section>
+    <section id="question">
+        <p>The condition in an if/else statement is enclosed with ______.</p>
+        <button id="incorrect" class="button">quotes</button>
+        <button id="incorrect" class="button">curly brackets</button>
+        <button id="correct" class="button">parenthesis</button>
+        <button id="incorrect" class="button">square brackets</button>
+    </section>
+    <section id="question">
+        <p>Arrays in JavaScript can be used to store
+            _____.</p>
+        <button id="correct" class="button">numbers and strings</button>
+        <button id="incorrect" class="button">other arrays</button>
+        <button id="incorrect" class="button">booleans</button>
+        <button id="incorrect" class="button">all of the above</button>
+    </section>
+    <section id="question">
+        <p>String values must be enclosed within ______ when being assigned to variables.</p>
+        <button id="incorrect" class="button">commas</button>
+        <button id="incorrect" class="button">curly brackets</button>
+        <button id="correct" class="button">quotes</button>
+        <button id="incorrect" class="button">parenthesis</button>
+    </section>
+    <section id="question">
+        <p>A useful tool used during development and debugging for printing content to the debugger is:</p>
+        <button id="incorrect" class="button">JavaScript</button>
+        <button id="incorrect" class="button">terminal/bash</button>
+        <button id="incorrect" class="button">for loops</button>
+        <button id="correct" class="button">console.log</button>
+    </section>
+    <section id="cycle">
+        <p>
+            All done!<br>
+            Your final score is 
+        </p>
+        <form>
+            <label for="initials">Enter Your Initials</label>
+            <input class="form-input" type="text" id="initials" />
+        </form>
+        <button type="submit" class="button">Submit</button>
+    </section>
+    <section>
+        <h2>High Scores</h2>
+        <button class="button" id="go-back">
+            Go Back
+        </button>
+        <button type="reset" class="button" id="clear-high-scores">
+            Clear High Scores
+        </button>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
