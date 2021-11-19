@@ -12,7 +12,7 @@
             <ul>
                 <li><a href="#high-scores">view high scores</a></li>
                 <li><h1>JavaScript Quiz</h1></li>
-                <li id="timer">Timer:</li>
+                <li>Timer: <span id="timer"></span></li>
             </ul>
         </nav>
     </header>
@@ -21,12 +21,15 @@
         <p> Try to answer the following code-relayed questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         <button id="start-quiz" class="button">Start Quiz</button>
     </section>
-    <section id="question">
-        <p>Commonly used data types DO NOT include:</p>
-        <button id="1" class="button">strings</button>
-        <button id="2" class="button">booleans</button>
-        <button id="3" class="button">alerts</button>
-        <button id="4" class="button">numbers</button>
+    <section>
+        <p id="question-place"></p>
+        <button id="one" class="button"></button>
+        <button id="two" class="button"></button>
+        <button id="three" class="button"></button>
+        <button id="four" class="button"></button>
+    </section>
+    <section>
+        <p id = "answer-type"></p>
     </section>
     
     <section id="cycle">
