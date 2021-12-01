@@ -1,203 +1,155 @@
-var questionEl
-//const questionEl = document.querySelector(".question")
+
+// var questionEl
+// //const questionEl = document.querySelector(".question")
 var startQuizBtn = document.querySelector("#start-quiz");
-var btn1 = document.querySelector("#one")
-var btn2 = document.querySelector("#two")
-var btn3 = document.querySelector("#three")
-var btn4 = document.querySelector("#four")
-var answerType = document.querySelector("#answer-type");
-var index = 0;
-// var displayTimer = document.querySelector("#timer")
-var second
+var i = 0;
+
 var timerEl = document.getElementById('timer');
-let score = 0;
+var timeLeft = 90;
+var newTime;
+
+
+// let score = 0;
+
+
+var questionList = [
+    {
+        text: "Commonly used data types DO NOT Include:",
+        choices: [
+            "strings",
+            "booleans",
+            "alerts",
+            "numbers"
+        ],
+        answer: "alerts"
+    },
+    {
+        text: "The condition in an if/else statement is enclosed with ______.",
+        choices: [
+            "quotes",
+            "curly brackets",
+            "parenthesis",
+            "square brackets"
+        ],
+        answer: "parenthesis"
+    },
+    {
+        text: "Arrays in JavaScript can be used to store_____.",
+        choices: [
+            "numbers and strings",
+            "other arrays",
+            "booleans",
+            "all of the above"
+        ],
+        answer: "all of the above"
+    },
+    {
+        text: "String values must be enclosed within ____ when being assigned to variables.",
+        choices: [
+            "commas",
+            "curly braces",
+            "quotes",
+            "parenthesis"
+        ],
+        answer: "quotes"
+    },
+    {
+        text: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: [
+            "JavaScript",
+            "terminal/bash",
+            "for loops",
+            "console.log"
+        ],
+        answer: "console.log"
+    }
+]
+
+
+function startGame () {
+    var card = document.querySelector("#card")
+    var questionsSection = document.querySelector("#question-section")
+    card.setAttribute("class", "hide")
+    questionsSection.removeAttribute("class", "hide")
+    question();
+    countdown();
+}
 
 function question () {
-    var card = document.querySelector("#card")
     var questions = document.querySelector("#question-place")
+    questions.textContent = questionList[i].text
+    var buttonBox = document.getElementById("button-box");
+    buttonBox.innerHTML = "";
+    questionList[i].choices.forEach(function(choice){
+        var choiceButton = document.createElement("button")
+        choiceButton.textContent = choice;
+        choiceButton.setAttribute("value", choice)
+        choiceButton.onclick = checkAnswers;
 
-    var questionList = [
-        "Commonly used data types DO NOT Include:",
-        "The condition in an if/else statement is enclosed with ______.",
-        "Arrays in JavaScript can be used to store_____.",
-        "String values must be enclosed within ____ when being assigned to variables.",
-        "A very useful tool used during development and debugging for printing content to the debugger is:",
-    ]
-
-    var btn1List = [
-        "stings",
-        "quotes",
-        "numbers and strings",
-        "commas",
-        "JavaScript",
-    ]
-
-    var btn2List = [
-        "booleans",
-        "curly brackets",
-        "other arrays",
-        "curly brackets",
-        "terminal/bash",
-    ]
-
-    var btn3List = [
-        "alerts",
-        "parenthesis",
-        "booleans",
-        "quotes",
-        "for loops",
-    ]
-
-    var btn4List = [
-        "numbers",
-        "square brackets",
-        "all of the above",
-        "parenthesis",
-        "console.log",
-    ]
-
-    questions.innerHTML = questionList [index];
-    one.innerHTML = btn1List [index];
-    two.innerHTML = btn2List [index];
-    three.innerHTML = btn3List [index];
-    four.innerHTML = btn4List [index];
-    
+        buttonBox.appendChild(choiceButton);
+    })
+     
 }
 
-function answerOne() {
-    if (index === 0 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 1 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 2 ) [
-        answerType.innerHTML = "Correct"
-    ] 
-    if (index === 3 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 4 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    index ++
-    question ()
-}
-function answerTwo() {
-    if (index === 0 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 1 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 2 ) [
-        answerType.innerHTML = "Incorrect"
-    ] 
-    if (index === 3 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 4 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    index ++
-    question ()
-}
-function answerThree() {
-    if (index === 0 ) [
-        answerType.innerHTML = "Correct"
-    ]
-    if (index === 1 ) [
-        answerType.innerHTML = "Correct"
-    ]
-    if (index === 2 ) [
-        answerType.innerHTML = "Incorrect"
-    ] 
-    if (index === 3 ) [
-        answerType.innerHTML = "Correct"
-    ]
-    if (index === 4 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    index ++
-    question ()
-}
-function answerFour() {
-    if (index === 0 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 1 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 2 ) [
-        answerType.innerHTML = "Incorrect"
-    ] 
-    if (index === 3 ) [
-        answerType.innerHTML = "Incorrect"
-    ]
-    if (index === 4 ) [
-        answerType.innerHTML = "Correct"
-    ]
-    index ++
-    question ()
+function checkAnswers () {
+    console.log(this.value)
+    if (this.value !== questionList[i].answer) {
+        console.log("wrong")
+        timeLeft -= 10;
+        console.log(timeLeft)
+    }
+    else {
+        console.log("correct")
+    }
+    i++;
+    if (i === questionList.length) {
+        console.log("run end function");
+        endGame ();
+    }
+    else {
+        question();
+    }
 }
 
-// Timer that counts down from 5
 function countdown() {
-    var timeLeft = 90;
-  
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  // setInterval("What do I do", "When do I do it?")
-  
     var timeInterval = setInterval(function () {
-      // As long as the `timeLeft` is greater than 1
-      if (timeLeft > 1) {
-        // Set the `textContent` of `timerEl` to show the remaining seconds
+        if (i === questionList.length) {
+            // timerEl.textContent = '';
+            clearInterval(timeInterval)
+            console.log(timeLeft)
+        }
+        if (timeLeft > 1) {
         timerEl.textContent = timeLeft + ' seconds remaining';
-        // Decrement `timeLeft` by 1
         timeLeft--;
       } else if (timeLeft === 1) {
-        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
         timerEl.textContent = timeLeft + ' second remaining';
         timeLeft--;
       } else {
-        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
         timerEl.textContent = '';
-        // Use `clearInterval()` to stop the timer
         clearInterval(timeInterval);
-        // Call the `displayMessage()` function
-        //displayMessage();
       }
     }, 1000);
     console.log(timeLeft)
-  }
+  }; 
 
- countdown(); 
+
+  function endGame () {
+    //hide card
+    var questionsSection = document.querySelector("#question-section")
+    var finalScore = document.querySelector("#final-score")
+    questionsSection.setAttribute("class", "hide")
+    finalScore.removeAttribute("class", "hide")
+    //stop timer 
+
+  };
+
+
 /* 
 var saveScores = function () {
     localStorage.setItem("scores", JSON.stringify(scores));
 } 
-
-function penalty () {
-   timer - 10000
-};
-
-function startTimer () {
-
-    //console.log("hello");
-    /*if (timer > 0) {
-        var activeTimer = timer - 1000;
-        console.log(timer)
-    }
-    setInterval(startTimer, 1000)
-};
-
-// var timerRunning = setInterval(startTimer,1000);
-// console.log(timerRunning)
 */
 
-startQuizBtn.addEventListener("click", question);
-// startQuizBtn.addEventListener("click", startTimer);
-btn1.addEventListener("click", answerOne);
-btn2.addEventListener("click", answerTwo);
-btn3.addEventListener("click", answerThree);
-btn4.addEventListener("click", answerFour);
+
+startQuizBtn.addEventListener("click", startGame);
+

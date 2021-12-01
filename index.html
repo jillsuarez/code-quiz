@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -21,18 +22,17 @@
         <p> Try to answer the following code-relayed questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         <button id="start-quiz" class="button">Start Quiz</button>
     </section>
-    <section>
+    <section id="question-section" class = "hide">
         <p id="question-place"></p>
-        <button id="one" class="button"></button>
-        <button id="two" class="button"></button>
-        <button id="three" class="button"></button>
-        <button id="four" class="button"></button>
+        <div id="button-box">
+
+        </div>
     </section>
     <section>
         <p id = "answer-type"></p>
     </section>
     
-    <section id="cycle">
+    <section id="final-score" class = "hide">
         <p>
             All done!<br>
             Your final score is 
@@ -43,7 +43,7 @@
         </form>
         <button type="submit" class="button">Submit</button>
     </section>
-    <section>
+    <section class = "hide">
         <h2>High Scores</h2>
         <button class="button" id="go-back">
             Go Back
