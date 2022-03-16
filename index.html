@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <main>
     <header>
         <nav>
             <ul>
-                <li><a href="#high-scores">view high scores</a></li>
+                <li><a href="#high-scores" onclick="printScores()">view high scores</a></li>
                 <li><h1>JavaScript Quiz</h1></li>
                 <li>Timer: <span id="timer"></span></li>
             </ul>
@@ -41,10 +42,11 @@
             <label for="initials">Enter Your Initials</label>
             <input class="form-input" type="text" id="initials" />
         </form>
-        <button type="submit" class="button">Submit</button>
+        <button type="submit" class="button" id="score-btn">Submit</button>
     </section>
-    <section class = "hide">
+    <section class = "hide" id="high-score-section">
         <h2>High Scores</h2>
+        <ul id="score-list"></ul>
         <button class="button" id="go-back">
             Go Back
         </button>
@@ -52,6 +54,7 @@
             Clear High Scores
         </button>
     </section>
+</main>
     <script src="script.js"></script>
 </body>
 </html>

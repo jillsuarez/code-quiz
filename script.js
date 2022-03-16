@@ -9,10 +9,11 @@ var timeLeft = 90;
 var newTime;
 
 var scoreEl = document.getElementById('score');
+var scoreBtn = document.getElementById('score-btn');
 
 
-// let score = 0;
-
+let score = 0;
+var highScores =JSON.parse(localStorage.getItem("scores"))||[]
 
 var questionList = [
     {
@@ -102,6 +103,7 @@ function checkAnswers () {
     }
     else {
         console.log("correct")
+        score++
     }
     i++;
     if (i === questionList.length) {
@@ -146,14 +148,35 @@ function countdown() {
 
   };
 
-//   var saveScores = function () {
-//     formEl.querySelector("#initials").textContent = "name"
-//   };
+scoreBtn.addEventListener("click", function() {
+    
+    var initials = document.getElementById("initials").value 
+    var scoreObj = {
+        initials: initials,
+        score: score*timeLeft
+    }
+    
+    console.log(scoreObj)
+    highScores.push(scoreObj)
 
-// saveScores.addEventListener("click", function() {
-//     console.log("scores")
-//     localStorage.setItem("scores", JSON.stringify(scores))
-// })
+    highScores.sort(function(a,b){
+        return b.score - a.score
+    })
+    localStorage.setItem("scores", JSON.stringify(highScores))
+    console.log(localStorage);
+
+})
+
+function printScores() {
+    var section = document.getElementById("high-score-section")
+    section.removeAttribute("class", "hide")
+    var scoreList = document.getElementById("score-list")
+    highScores.forEach(function(score){
+        var li = document.createElement("li")
+        li.textContent= score.initials + " " + score.score
+        scoreList.appendChild(li)
+    })
+}
 
 
 
