@@ -8,6 +8,8 @@ var timerEl = document.getElementById('timer');
 var timeLeft = 90;
 var newTime;
 
+var scoreEl = document.getElementById('score');
+
 
 // let score = 0;
 
@@ -117,6 +119,7 @@ function countdown() {
             // timerEl.textContent = '';
             clearInterval(timeInterval)
             console.log(timeLeft)
+            scoreEl.textContent = timeLeft;
         }
         if (timeLeft > 1) {
         timerEl.textContent = timeLeft + ' seconds remaining';
@@ -143,12 +146,15 @@ function countdown() {
 
   };
 
+//   var saveScores = function () {
+//     formEl.querySelector("#initials").textContent = "name"
+//   };
 
-/* 
-var saveScores = function () {
-    localStorage.setItem("scores", JSON.stringify(scores));
-} 
-*/
+// saveScores.addEventListener("click", function() {
+//     console.log("scores")
+//     localStorage.setItem("scores", JSON.stringify(scores))
+// })
+
 
 
 startQuizBtn.addEventListener("click", startGame);
